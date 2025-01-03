@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
-      <div className="container-fluid">
+      <div className="container">
         <Link to="/" className="navbar-brand">
           Blog <span className="text-primary">App</span>
         </Link>
