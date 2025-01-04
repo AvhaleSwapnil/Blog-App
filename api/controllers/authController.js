@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import User from "../models/userModel.js";
-export const signup = async (req, res) => {
+import { errorHandler } from "../utils/error.js";
+export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
   if (
     !username ||
@@ -10,7 +11,7 @@ export const signup = async (req, res) => {
     email === "" ||
     password === ""
   ) {
-    return res.status(400).json("All Fields are required");
+    next(errorHandler(500, "All fields are required..!"));
   }
   const hashPassword = bcrypt.hashSync(password, 10);
 
@@ -23,6 +24,6 @@ export const signup = async (req, res) => {
     await newUser.save();
     res.status(200).json("signup successful..!");
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    next(error);
   }
 };
