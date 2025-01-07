@@ -6,7 +6,8 @@ export default function Footer() {
       <div className="row">
         <div className="col-12 col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
           <Link to="/" className="fs-3 text-decoration-none">
-            Blog <span className="text-primary">App</span>
+            <span className="text-dark">Blog</span>
+            <span className="text-primary">App</span>
           </Link>
         </div>
         <div className="col-12 col-lg-8">
