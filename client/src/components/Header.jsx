@@ -45,9 +45,11 @@ export default function Header() {
                 Projects
               </Link>
             </li>
-            <button type="button" className="btn btn-outline-primary">
-              Sign In
-            </button>
+            <Link to="/sign-in">
+              <button type="submit" className="btn btn-outline-primary w-100">
+                Sign In
+              </button>
+            </Link>
           </ul>
         </div>
       </div>
