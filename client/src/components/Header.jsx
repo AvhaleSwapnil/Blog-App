@@ -1,5 +1,9 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 export default function Header() {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
       <div className="container">
@@ -29,7 +33,7 @@ export default function Header() {
               Search
             </button>
           </form>
-          <ul className="navbar-nav mb-2 mb-lg-0">
+          <ul className="navbar-nav mb-2 mb-lg-0 mx-5">
             <li className="nav-item">
               <Link to="/" className="nav-link active" aria-current="page">
                 Home
@@ -45,11 +49,52 @@ export default function Header() {
                 Projects
               </Link>
             </li>
-            <Link to="/sign-in">
-              <button type="submit" className="btn btn-outline-primary w-100">
-                Sign In
-              </button>
-            </Link>
+            {currentUser ? (
+              <div className="dropdown">
+                <img
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  src={currentUser.profilePicture}
+                  alt="profile pic"
+                  className="rounded-circle img-fluid dropdown-toggle"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    objectFit: "cover",
+                  }}
+                />
+                <ul
+                  className="dropdown-menu text-wrap"
+                  style={{
+                    minWidth: "200px",
+                    maxWidth: "250px",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <li>
+                    <span className="d-block fs-6 mx-2">
+                      {currentUser.username}
+                    </span>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/dashboard?tab=profile">
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item mt-2 mx-2" to="/">
+                      Sign Out
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/sign-in">
+                <button type="submit" className="btn btn-outline-primary w-100">
+                  Sign In
+                </button>
+              </Link>
+            )}
           </ul>
         </div>
       </div>
