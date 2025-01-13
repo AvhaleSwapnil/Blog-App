@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -98,12 +99,7 @@ export default function SignUp() {
                     "Sign Up"
                   )}
                 </button>
-                <button
-                  type="submit"
-                  className="btn btn-outline-primary w-100 mb-2"
-                >
-                  Continue With Google
-                </button>
+                <OAuth />
               </form>
               <div className="d-flex gap-2">
                 <span>Have an account?</span>
