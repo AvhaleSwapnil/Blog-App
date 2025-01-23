@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="container-fluid border-top border-primary py-4">
+    <div className="container-fluid border-4 rounded border border-primary py-4 mb-2">
       <div className="row">
         <div className="col-12 col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
           <Link to="/" className="fs-3 text-decoration-none">
